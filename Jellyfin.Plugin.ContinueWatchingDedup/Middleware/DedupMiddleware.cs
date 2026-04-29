@@ -196,6 +196,17 @@ public class DedupMiddleware
             return true;
         }
 
+        // Pattern 4: /HomeScreen/Section/ContinueWatching (Home Screen Sections
+        // plugin and Jellyfin Enhanced — replace the stock home Continue Watching
+        // row with their own endpoint, bypassing /Items/Resume entirely).
+        if (parts.Length == 3
+            && string.Equals(parts[0], "HomeScreen", StringComparison.OrdinalIgnoreCase)
+            && string.Equals(parts[1], "Section", StringComparison.OrdinalIgnoreCase)
+            && string.Equals(parts[2], "ContinueWatching", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+
         return false;
     }
 

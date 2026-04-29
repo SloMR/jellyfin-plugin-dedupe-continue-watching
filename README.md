@@ -42,6 +42,7 @@ Jellyfin's native Continue Watching row shows **every episode with partial progr
 | Client | Endpoint | Compression | Status |
 |---|---|---|---|
 | Jellyfin Web (native + KefinTweaks) | `/Users/{userId}/Items/Resume` | none | ✅ |
+| Jellyfin Web + Jellyfin Enhanced / Home Screen Sections | `/HomeScreen/Section/ContinueWatching` | varies | ✅ |
 | SwiftFin (iOS) | `/UserItems/Resume` | none | ✅ |
 | Wholphin (Android TV) | `/UserItems/Resume` | gzip | ✅ |
 | Findroid (jellyfin-sdk-kotlin) | `/UserItems/Resume` | gzip | ✅ |
@@ -82,9 +83,10 @@ Find it under **Dashboard → Plugins → Continue Watching Deduplicator**.
 
 Middleware registered via `IPluginServiceRegistrator` + `IStartupFilter` intercepts responses on:
 
-- `/Users/{userId}/Items/Resume`
-- `/UserItems/Resume`
-- `/Shows/Resume`
+- `/Users/{userId}/Items/Resume` (Web, official Android)
+- `/UserItems/Resume` (SwiftFin, Wholphin, Findroid — SDK clients)
+- `/Shows/Resume` (legacy clients)
+- `/HomeScreen/Section/ContinueWatching` (Home Screen Sections plugin / Jellyfin Enhanced)
 
 For each matching 200 response it:
 
