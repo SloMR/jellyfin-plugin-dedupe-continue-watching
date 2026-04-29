@@ -1,0 +1,14 @@
+name: "Continue Watching Deduplicator"
+guid: "c1a8f9b4-7e3d-4c2a-9f8e-3d4a5b6c7d8e"
+version: "1.0.0.0"
+targetAbi: "10.10.0.0"
+framework: "net8.0"
+overview: "Removes duplicate episodes from Continue Watching"
+description: >
+  Server-side plugin that deduplicates the Continue Watching row.
+  Each series appears once — represented by the most recently played episode.
+  Works on every Jellyfin client (Web, Android, iOS, Android TV, Roku, etc).
+category: "General"
+owner: "SloMR"
+artifacts:
+  - "Jellyfin.Plugin.ContinueWatchingDedup.dll"
