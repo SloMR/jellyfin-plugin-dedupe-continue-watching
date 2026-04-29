@@ -1,18 +1,20 @@
-# Jellyfin Continue Watching Deduplicator
+<p align="center">
+  <img src="Jellyfin.Plugin.ContinueWatchingDedup/images/thumb.png" alt="Continue Watching Deduplicator" width="320" />
+</p>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Jellyfin 10.10+](https://img.shields.io/badge/Jellyfin-10.10%2B-00A4DC.svg)](https://jellyfin.org)
-[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4.svg)](https://dotnet.microsoft.com/)
-[![Release](https://img.shields.io/github/v/release/SloMR/jellyfin-plugin-dedupe-continue-watching?include_prereleases&sort=semver)](https://github.com/SloMR/jellyfin-plugin-dedupe-continue-watching/releases)
-[![Build](https://img.shields.io/github/actions/workflow/status/SloMR/jellyfin-plugin-dedupe-continue-watching/release.yml?branch=main)](https://github.com/SloMR/jellyfin-plugin-dedupe-continue-watching/actions)
+<h1 align="center">Jellyfin Continue Watching Deduplicator</h1>
+
+<p align="center">
+  <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3" /></a>
+  <a href="https://jellyfin.org"><img src="https://img.shields.io/badge/Jellyfin-10.10%2B-00A4DC.svg" alt="Jellyfin 10.10+" /></a>
+  <a href="https://dotnet.microsoft.com/"><img src="https://img.shields.io/badge/.NET-8.0-512BD4.svg" alt=".NET 8" /></a>
+  <a href="https://github.com/SloMR/jellyfin-plugin-dedupe-continue-watching/releases"><img src="https://img.shields.io/github/v/release/SloMR/jellyfin-plugin-dedupe-continue-watching?include_prereleases&sort=semver" alt="Release" /></a>
+  <a href="https://github.com/SloMR/jellyfin-plugin-dedupe-continue-watching/actions"><img src="https://img.shields.io/github/actions/workflow/status/SloMR/jellyfin-plugin-dedupe-continue-watching/release.yml" alt="Build" /></a>
+</p>
 
 A server-side Jellyfin plugin that deduplicates the **Continue Watching** row so each series appears only once — represented by the most recently played episode.
 
 Works on **every Jellyfin client** (Web, Desktop, Android, iOS, Android TV, Roku, SwiftFin, Findroid, Wholphin, …) because it runs on the server, before any client receives the data.
-
-<p align="center">
-  <img src="Jellyfin.Plugin.ContinueWatchingDedup/images/thumb.png" alt="Continue Watching Deduplicator" width="240" />
-</p>
 
 <!-- TODO: replace with a real before/after screenshot -->
 <!-- ![Before/after screenshot](assets/screenshot.png) -->
