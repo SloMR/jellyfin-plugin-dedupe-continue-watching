@@ -1,0 +1,12 @@
+[
+  {
+    "guid": "c1a8f9b4-7e3d-4c2a-9f8e-3d4a5b6c7d8e",
+    "name": "Continue Watching Deduplicator",
+    "description": "Server-side plugin that deduplicates the Continue Watching row. Each series appears once, represented by the most recently played episode. Works on every Jellyfin client.",
+    "overview": "Removes duplicate episodes from Continue Watching",
+    "owner": "SloMR",
+    "category": "General",
+    "imageUrl": "https://raw.githubusercontent.com/SloMR/jellyfin-plugin-dedupe-continue-watching/main/Jellyfin.Plugin.ContinueWatchingDedup/images/thumb.png",
+    "versions": []
+  }
+]
