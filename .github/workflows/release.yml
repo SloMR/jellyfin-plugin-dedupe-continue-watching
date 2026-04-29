@@ -112,6 +112,10 @@ jobs:
           base: main
           branch: ci/manifest-${{ steps.ver.outputs.tag }}
           delete-branch: true
+          # Only stage manifest.json — never commit build artifacts (the
+          # dist/ and artifacts/ directories from earlier steps still sit
+          # in the working tree at this point).
+          add-paths: manifest.json
           commit-message: "ci: update manifest for ${{ steps.ver.outputs.tag }}"
           title: "ci: update manifest for ${{ steps.ver.outputs.tag }}"
           body: |
