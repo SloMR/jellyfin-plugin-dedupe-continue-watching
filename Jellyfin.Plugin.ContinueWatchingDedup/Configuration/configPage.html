@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Continue Watching Deduplicator</title>
+</head>
+<body>
+<div id="ContinueWatchingDedupConfigPage"
+     data-role="page"
+     class="page type-interior pluginConfigurationPage"
+     data-require="emby-input,emby-button,emby-checkbox,emby-collapse">
+
+    <div data-role="content">
+        <div class="content-primary">
+            <form id="ContinueWatchingDedupConfigForm">
+                <h2>Continue Watching Deduplicator</h2>
+                <p style="opacity:0.8;">
+                    Removes duplicate episodes from the Continue Watching row.
+                    Each series will appear once, represented by the most recently played episode.
+                </p>
+
+                <div class="checkboxContainer checkboxContainer-withDescription">
+                    <label>
+                        <input is="emby-checkbox" type="checkbox" id="Enabled" />
+                        <span>Enable deduplication</span>
+                    </label>
+                    <div class="fieldDescription checkboxFieldDescription">
+                        When disabled, the plugin acts as a no-op (no API responses are modified).
+                    </div>
+                </div>
+
+                <div class="checkboxContainer checkboxContainer-withDescription">
+                    <label>
+                        <input is="emby-checkbox" type="checkbox" id="DeduplicateMovies" />
+                        <span>Also deduplicate movies</span>
+                    </label>
+                    <div class="fieldDescription checkboxFieldDescription">
+                        Only useful if you have multiple versions of the same movie file.
+                    </div>
+                </div>
+
+                <div class="inputContainer">
+                    <label class="inputLabel inputLabelUnfocused" for="MaxEpisodesPerSeries">
+                        Max episodes per series
+                    </label>
+                    <input is="emby-input" type="number" id="MaxEpisodesPerSeries" min="1" max="10" />
+                    <div class="fieldDescription">
+                        Default: 1 (only the most recent episode per series).
+                        Set higher to keep multiple episodes per series in Continue Watching.
+                    </div>
+                </div>
+
+                <div>
+                    <button is="emby-button" type="submit" class="raised button-submit block">
+                        <span>Save</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+            var pluginUniqueId = "c1a8f9b4-7e3d-4c2a-9f8e-3d4a5b6c7d8e";
+
+            function loadConfig(page) {
+                Dashboard.showLoadingMsg();
+                ApiClient.getPluginConfiguration(pluginUniqueId).then(function (config) {
+                    page.querySelector('#Enabled').checked = config.Enabled;
+                    page.querySelector('#DeduplicateMovies').checked = config.DeduplicateMovies;
+                    page.querySelector('#MaxEpisodesPerSeries').value = config.MaxEpisodesPerSeries || 1;
+                    Dashboard.hideLoadingMsg();
+                });
+            }
+
+            function saveConfig(e) {
+                e.preventDefault();
+                Dashboard.showLoadingMsg();
+                var page = document.querySelector('#ContinueWatchingDedupConfigPage');
+
+                ApiClient.getPluginConfiguration(pluginUniqueId).then(function (config) {
+                    config.Enabled = page.querySelector('#Enabled').checked;
+                    config.DeduplicateMovies = page.querySelector('#DeduplicateMovies').checked;
+                    config.MaxEpisodesPerSeries = parseInt(page.querySelector('#MaxEpisodesPerSeries').value, 10) || 1;
+
+                    ApiClient.updatePluginConfiguration(pluginUniqueId, config).then(function (result) {
+                        Dashboard.processPluginConfigurationUpdateResult(result);
+                    });
+                });
+                return false;
+            }
+
+            document.querySelector('#ContinueWatchingDedupConfigPage')
+                .addEventListener('pageshow', function () {
+                    loadConfig(this);
+                });
+
+            document.querySelector('#ContinueWatchingDedupConfigForm')
+                .addEventListener('submit', saveConfig);
+        })();
+    </script>
+</div>
+</body>
+</html>
